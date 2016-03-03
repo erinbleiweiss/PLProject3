@@ -35,6 +35,18 @@ var person = function(){
 var customer = function(p){
     // private data
     var data = {
+        firstName: 'First',
+        $firstName: function(n){
+            data.firstName = n;
+        },
+        lastName: 'Last',
+        $lastName: function(n){
+            data.lastName = n;
+        },
+        email: 'name@domain.com',
+        $email: function(n){
+            data.email = n;
+        },
         customerNum: 0,
         $customerNum: function(n){
             data.customerNum = n;
@@ -89,6 +101,12 @@ c1.run('$firstName')('Erin');
 c1.run('$lastName')('Bleiweiss');
 c1.run('$email')('erinbleiweiss@gmail.com');
 c1.run('$customerNum')(1);
+document.writeln(c1.run('firstName') + "<br>");
+document.writeln(c1.run('lastName') + "<br>");
+document.writeln(c1.run('email') + "<br>");
+document.writeln(c1.run('customerNum') + "<br><br>");
+
+
 document.writeln(c1.getDisplayText + "<br>");
 
 
