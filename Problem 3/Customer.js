@@ -1,5 +1,3 @@
-//"use strict";
-
 var person = function(){
     // private data
     var data = {
