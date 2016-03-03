@@ -22,6 +22,10 @@ var person = function(){
     f.run = function (e) {
         return data[e];
     };
+    f.getDisplayText = (
+        "Name: " + f.run('firstName') + " " + f.run('lastName') + "<br>" +
+        "Email: " + f.run('email')
+    );
 
     return f;
 
@@ -47,6 +51,10 @@ var customer = function(p){
         if(r === undefined) return F.prototype.run(e);
         else return r;
     };
+    f.getDisplayText = (
+        F.prototype.getDisplayText + "<br>" +
+        "Customer number: " + f.run('customerNum')
+    );
 
     return f;
 }(person);
@@ -74,3 +82,23 @@ var employee = function(p){
 
     return f;
 }(person);
+
+
+var c1 = Object.create(customer);
+c1.run('$firstName')('Erin');
+c1.run('$lastName')('Bleiweiss');
+c1.run('$email')('erinbleiweiss@gmail.com');
+c1.run('$customerNum')(1);
+document.writeln(c1.getDisplayText + "<br>");
+
+
+
+
+
+
+
+
+
+
+
+
