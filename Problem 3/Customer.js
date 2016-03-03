@@ -13,7 +13,7 @@ var person = function(){
         $email: function(n){
             data.email = n;
         }
-    }
+    };
 
     var F = function(){};
     f = new F();
