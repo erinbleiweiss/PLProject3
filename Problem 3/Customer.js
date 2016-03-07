@@ -95,10 +95,31 @@ c1.run('$lastName')('Bleiweiss');
 c1.run('$email')('erinbleiweiss@gmail.com');
 c1.run('$customerNum')(1);
 
-document.writeln(c1.getDisplayText());
+//document.writeln(c1.getDisplayText());
 
 
+$(document).ready(function( ){
 
+    $("input:radio[name=formtype]").click(function() {
+        var value = $(this).val();
+        var customerForm = $('#customerForm');
+        var employeeForm = $('#employeeForm');
+        if (value == "customer"){
+            customerForm.toggleClass("hide");
+            if (!employeeForm.hasClass("hide")){
+                employeeForm.toggleClass("hide");
+            }
+        } else {
+            employeeForm.toggleClass("hide");
+            if (!customerForm.hasClass("hide")){
+                customerForm.toggleClass("hide");
+            }
+        }
+
+    });
+
+
+});
 
 
 

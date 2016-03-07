@@ -2,11 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Project 3</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="Customer.js"></script>
-    <title>Title</title>
 </head>
 <body>
-    <form id="customerForm">
+    <div>
+        Welcome to the Person Tester application
+        <br><br>
+        Create customer or employee?
+        <form>
+            <label for="customer">Customer</label>
+            <input type="radio" id="customer" name="formtype" value="customer">
+
+            <label for="employee">Employee</label>
+            <input type="radio" id="employee" name="formtype" value="employee">
+        </form>
+    </div>
+
+    <form id="customerForm" class="hide">
         <table>
             <tr>
                 <td><label for="c_firstName">First name:</label></td>
@@ -25,10 +40,10 @@
                 <td><input type="text" id="customerNum" name="customerNum"></td>
             </tr>
         </table>
-        <input type="button" value="Submit" id="c_submit">
+        <input type="submit" value="Submit" id="c_submit">
     </form>
 
-    <form id="employeeForm">
+    <form id="employeeForm" class="hide">
         <table>
             <tr>
                 <td><label for="e_firstName">First name:</label></td>
@@ -47,7 +62,7 @@
                 <td><input type="text" id="ssn" name="ssn"></td>
             </tr>
         </table>
-        <input type="button" value="Submit" id="e_submit">
+        <input type="submit" value="Submit" id="e_submit">
     </form>
 
 
