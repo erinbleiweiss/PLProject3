@@ -131,7 +131,22 @@ $(document).ready(function( ){
 
     });
 
+    $("#employeeForm").submit(function(e){
+        e.preventDefault();
+        var firstName = $('#e_firstName').val();
+        var lastName = $('#e_lastName').val();
+        var email = $('#e_email').val();
+        var ssn = $('#ssn').val();
 
+        var e1 = Object.create(employee);
+        e1.run('$firstName')(firstName);
+        e1.run('$lastName')(lastName);
+        e1.run('$email')(email);
+        e1.run('$ssn')(ssn);
+
+        $("#result").html(e1.getDisplayText());
+
+    });
 });
 
 
