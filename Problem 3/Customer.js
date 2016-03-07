@@ -80,6 +80,11 @@ var employee = function(p){
         else return r;
     };
 
+    f.getDisplayText = function(){
+        return F.prototype.getDisplayText() + "<br>" +
+            "Social security number: " + this.run("ssn");
+    };
+
     return f;
 }(person);
 
