@@ -96,17 +96,24 @@ var employee = function(p){
 
 $(document).ready(function( ){
 
+    $("input[type=submit]").toggleClass("hide");
+
+    var customerForm = $('#customerForm');
+    var employeeForm = $('#employeeForm');
+
     $("input:radio[name=formtype]").click(function() {
         var value = $(this).val();
-        var customerForm = $('#customerForm');
-        var employeeForm = $('#employeeForm');
         if (value == "customer"){
-            customerForm.toggleClass("hide");
+            if (customerForm.hasClass("hide")){
+                customerForm.toggleClass("hide");
+            }
             if (!employeeForm.hasClass("hide")){
                 employeeForm.toggleClass("hide");
             }
         } else {
-            employeeForm.toggleClass("hide");
+            if (employeeForm.hasClass("hide")){
+                employeeForm.toggleClass("hide");
+            }
             if (!customerForm.hasClass("hide")){
                 customerForm.toggleClass("hide");
             }
@@ -127,7 +134,10 @@ $(document).ready(function( ){
         c1.run('$email')(email);
         c1.run('$customerNum')(customerNum);
 
-        $("#result").html(c1.getDisplayText());
+        $("#result").toggleClass("hide");
+        $("#result").html("You entered:<br>");
+        $("#result").append(c1.getDisplayText());
+        disableForm();
 
     });
 
@@ -144,10 +154,33 @@ $(document).ready(function( ){
         e1.run('$email')(email);
         e1.run('$ssn')(ssn);
 
-        $("#result").html(e1.getDisplayText());
+        $("#result").toggleClass("hide");
+        $("#result").html("You entered:<br><br>");
+        $("#result").append(e1.getDisplayText());
+        disableForm();
 
     });
+
+    $("#continue").click(function(){
+        $("#result").toggleClass("hide");
+        $("#continue").toggleClass("hide");
+        $("input:radio[name=formtype]").prop('disabled',false);
+        $("input:radio[name=formtype]").prop('checked', false);
+        if (!employeeForm.hasClass("hide")){
+            employeeForm.toggleClass("hide");
+        }
+        if (!customerForm.hasClass("hide")){
+            customerForm.toggleClass("hide");
+        }
+        $("input").val("");
+
+    });
+
 });
 
-
+function disableForm(){
+    $("input[type=submit]").toggleClass("hide");
+    $("input:radio[name=formtype]").attr('disabled',true);
+    $("#continue").toggleClass("hide");
+}
 
