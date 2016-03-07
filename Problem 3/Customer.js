@@ -91,12 +91,7 @@ var employee = function(p){
 
 
 
-//document.writeln(c1.getDisplayText());
-
-
 $(document).ready(function( ){
-
-    $("input[type=submit]").toggleClass("hide");
 
     var customerForm = $('#customerForm');
     var employeeForm = $('#employeeForm');
@@ -104,19 +99,11 @@ $(document).ready(function( ){
     $("input:radio[name=formtype]").click(function() {
         var value = $(this).val();
         if (value == "customer"){
-            if (customerForm.hasClass("hide")){
-                customerForm.toggleClass("hide");
-            }
-            if (!employeeForm.hasClass("hide")){
-                employeeForm.toggleClass("hide");
-            }
+            customerForm.removeClass("hide");
+            employeeForm.addClass("hide");
         } else {
-            if (employeeForm.hasClass("hide")){
-                employeeForm.toggleClass("hide");
-            }
-            if (!customerForm.hasClass("hide")){
-                customerForm.toggleClass("hide");
-            }
+            employeeForm.removeClass("hide");
+            customerForm.addClass("hide");
         }
 
     });
@@ -134,8 +121,8 @@ $(document).ready(function( ){
         c1.run('$email')(email);
         c1.run('$customerNum')(customerNum);
 
-        $("#result").toggleClass("hide");
-        $("#result").html("You entered:<br>");
+        $("#result").removeClass("hide");
+        $("#result").html("You entered:<br><br>");
         $("#result").append(c1.getDisplayText());
         disableForm();
 
@@ -154,7 +141,7 @@ $(document).ready(function( ){
         e1.run('$email')(email);
         e1.run('$ssn')(ssn);
 
-        $("#result").toggleClass("hide");
+        $("#result").removeClass("hide");
         $("#result").html("You entered:<br><br>");
         $("#result").append(e1.getDisplayText());
         disableForm();
@@ -162,25 +149,20 @@ $(document).ready(function( ){
     });
 
     $("#continue").click(function(){
-        $("#result").toggleClass("hide");
-        $("#continue").toggleClass("hide");
-        $("input:radio[name=formtype]").prop('disabled',false);
+        $("#result").addClass("hide");
+        $("#continue").addClass("hide");
+        $("#applicationInput").removeClass("hide");
         $("input:radio[name=formtype]").prop('checked', false);
-        if (!employeeForm.hasClass("hide")){
-            employeeForm.toggleClass("hide");
-        }
-        if (!customerForm.hasClass("hide")){
-            customerForm.toggleClass("hide");
-        }
-        $("input").val("");
+        employeeForm.addClass("hide");
+        customerForm.addClass("hide");
+        $("input[type=text]").val("");
 
     });
 
 });
 
 function disableForm(){
-    $("input[type=submit]").toggleClass("hide");
-    $("input:radio[name=formtype]").attr('disabled',true);
-    $("#continue").toggleClass("hide");
+    $("#applicationInput").addClass("hide");
+    $("#continue").removeClass("hide");
 }
 
