@@ -89,11 +89,7 @@ var employee = function(p){
 }(person);
 
 
-var c1 = Object.create(customer);
-c1.run('$firstName')('Erin');
-c1.run('$lastName')('Bleiweiss');
-c1.run('$email')('erinbleiweiss@gmail.com');
-c1.run('$customerNum')(1);
+
 
 //document.writeln(c1.getDisplayText());
 
@@ -115,6 +111,23 @@ $(document).ready(function( ){
                 customerForm.toggleClass("hide");
             }
         }
+
+    });
+
+    $("#customerForm").submit(function(e){
+        e.preventDefault();
+        var firstName = $('#c_firstName').val();
+        var lastName = $('#c_lastName').val();
+        var email = $('#c_email').val();
+        var customerNum = $('#customerNum').val();
+
+        var c1 = Object.create(customer);
+        c1.run('$firstName')(firstName);
+        c1.run('$lastName')(lastName);
+        c1.run('$email')(email);
+        c1.run('$customerNum')(customerNum);
+
+        $("#result").html(c1.getDisplayText());
 
     });
 

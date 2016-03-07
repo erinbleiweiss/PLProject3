@@ -5,3 +5,9 @@
 td {
     min-width: 175px;
 }
+
+#result{
+    width: 350px;
+    min-height: 200px;
+    border: 1px solid black;
+}
