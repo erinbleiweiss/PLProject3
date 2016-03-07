@@ -102,9 +102,3 @@ document.writeln(c1.getDisplayText());
 
 
 
-
-
-
-
-
-
