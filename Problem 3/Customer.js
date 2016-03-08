@@ -110,41 +110,64 @@ $(document).ready(function( ){
 
     $("#customerForm").submit(function(e){
         e.preventDefault();
-        var firstName = $('#c_firstName').val();
-        var lastName = $('#c_lastName').val();
-        var email = $('#c_email').val();
-        var customerNum = $('#customerNum').val();
 
-        var c1 = Object.create(customer);
-        c1.run('$firstName')(firstName);
-        c1.run('$lastName')(lastName);
-        c1.run('$email')(email);
-        c1.run('$customerNum')(customerNum);
+        var error = false;
+        $("#customerForm input[type=text]").each(function(){
+           if (! $(this).val()){
+               alert("Fields should not be blank");
+               error = true;
+               return false;
+           }
+        });
 
-        $("#result").removeClass("hide");
-        $("#result").html("You entered:<br><br>");
-        $("#result").append(c1.getDisplayText());
-        disableForm();
+        if (!error) {
+            var firstName = $('#c_firstName').val();
+            var lastName = $('#c_lastName').val();
+            var email = $('#c_email').val();
+            var customerNum = $('#customerNum').val();
 
+            var c1 = Object.create(customer);
+            c1.run('$firstName')(firstName);
+            c1.run('$lastName')(lastName);
+            c1.run('$email')(email);
+            c1.run('$customerNum')(customerNum);
+
+            $("#result").removeClass("hide");
+            $("#result").html("You entered:<br><br>");
+            $("#result").append(c1.getDisplayText());
+            disableForm();
+        }
     });
 
     $("#employeeForm").submit(function(e){
         e.preventDefault();
-        var firstName = $('#e_firstName').val();
-        var lastName = $('#e_lastName').val();
-        var email = $('#e_email').val();
-        var ssn = $('#ssn').val();
 
-        var e1 = Object.create(employee);
-        e1.run('$firstName')(firstName);
-        e1.run('$lastName')(lastName);
-        e1.run('$email')(email);
-        e1.run('$ssn')(ssn);
+        var error = false;
+        $("#employeeForm input[type=text]").each(function(){
+            if (! $(this).val()){
+                alert("Fields should not be blank");
+                error = true;
+                return false;
+            }
+        });
 
-        $("#result").removeClass("hide");
-        $("#result").html("You entered:<br><br>");
-        $("#result").append(e1.getDisplayText());
-        disableForm();
+        if (!error) {
+            var firstName = $('#e_firstName').val();
+            var lastName = $('#e_lastName').val();
+            var email = $('#e_email').val();
+            var ssn = $('#ssn').val();
+
+            var e1 = Object.create(employee);
+            e1.run('$firstName')(firstName);
+            e1.run('$lastName')(lastName);
+            e1.run('$email')(email);
+            e1.run('$ssn')(ssn);
+
+            $("#result").removeClass("hide");
+            $("#result").html("You entered:<br><br>");
+            $("#result").append(e1.getDisplayText());
+            disableForm();
+        }
 
     });
 
